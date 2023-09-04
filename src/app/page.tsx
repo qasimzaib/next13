@@ -1,6 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function Home() {
+	const router = useRouter();
+	const [location, setLocation] = useState("");
+
 	return (
 		<main className="bg-gray-100 min-h-screen w-screen">
 			<main className="max-w-screen-2xl m-auto bg-white">
@@ -32,8 +39,19 @@ export default function Home() {
 									className="rounded  mr-3 p-2 w-[450px]"
 									type="text"
 									placeholder="State, city or town"
+									value={location}
+									onChange={(e) => {
+										setLocation(e.target.value);
+									}}
 								/>
-								<button className="rounded bg-red-600 px-9 py-2 text-white">
+								<button
+									className="rounded bg-red-600 px-9 py-2 text-white"
+									onClick={() => {
+										if (location === "mcg") {
+											router.push("/search");
+										}
+									}}
+								>
 									Let's go
 								</button>
 							</div>
@@ -45,28 +63,28 @@ export default function Home() {
 						{/* CARD */}
 						<div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
 							<Link href="/restaurant/mcg">
-							<img
-								src="https://resizer.otstatic.com/v2/photos/wide-huge/2/31852905.jpg"
-								alt=""
-								className="w-full h-36"
-							/>
-							<div className="p-1">
-								<h3 className="font-bold text-2xl mb-2 text-black">
-									Milestones Grill
-								</h3>
-								<div className="flex items-start text-gray-700">
-									<div className="flex mb-2">*****</div>
-									<p className="ml-2">77 reviews</p>
+								<img
+									src="https://resizer.otstatic.com/v2/photos/wide-huge/2/31852905.jpg"
+									alt=""
+									className="w-full h-36"
+								/>
+								<div className="p-1">
+									<h3 className="font-bold text-2xl mb-2 text-black">
+										Milestones Grill
+									</h3>
+									<div className="flex items-start text-gray-700">
+										<div className="flex mb-2">*****</div>
+										<p className="ml-2">77 reviews</p>
+									</div>
+									<div className="flex text-reg font-light capitalize text-gray-500">
+										<p className=" mr-3">Mexican</p>
+										<p className="mr-3">$$$$</p>
+										<p>Toronto</p>
+									</div>
+									<p className="text-sm mt-1 font-bold text-gray-500">
+										Booked 3 times today
+									</p>
 								</div>
-								<div className="flex text-reg font-light capitalize text-gray-500">
-									<p className=" mr-3">Mexican</p>
-									<p className="mr-3">$$$$</p>
-									<p>Toronto</p>
-								</div>
-								<p className="text-sm mt-1 font-bold text-gray-500">
-									Booked 3 times today
-								</p>
-							</div>
 							</Link>
 						</div>
 						{/* CARD */}
