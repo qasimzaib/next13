@@ -31,14 +31,12 @@ export default function RestaurantMenu() {
 					<div className="bg-white w-[100%] rounded p-3 shadow">
 						{/* RESAURANT NAVBAR */}
 						<nav className="flex text-reg border-b pb-2">
-							<a href="" className="mr-7">
-								{" "}
+							<Link href="/restaurant/mcg" className="mr-7">
 								Overview{" "}
-							</a>
-							<a href="" className="mr-7">
-								{" "}
+							</Link>
+							<Link href="/restaurant/mcg/menu" className="mr-7">
 								Menu{" "}
-							</a>
+							</Link>
 						</nav>
 						{/* RESAURANT NAVBAR */} {/* MENU */}
 						<main className="bg-white mt-5">
