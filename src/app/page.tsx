@@ -1,13 +1,14 @@
+import Link from "next/link";
+
 export default function Home() {
 	return (
 		<main className="bg-gray-100 min-h-screen w-screen">
 			<main className="max-w-screen-2xl m-auto bg-white">
 				{/* NAVBAR */}
 				<nav className="bg-white p-2 flex justify-between">
-					<a href="" className="font-bold text-gray-700 text-2xl">
-						{" "}
+					<Link href="/" className="font-bold text-gray-700 text-2xl">
 						OpenTable{" "}
-					</a>
+					</Link>
 					<div>
 						<div className="flex">
 							<button className="bg-blue-400 text-white border p-1 px-4 rounded mr-3">
@@ -49,7 +50,9 @@ export default function Home() {
 								className="w-full h-36"
 							/>
 							<div className="p-1">
-								<h3 className="font-bold text-2xl mb-2 text-black">Milestones Grill</h3>
+								<h3 className="font-bold text-2xl mb-2 text-black">
+									Milestones Grill
+								</h3>
 								<div className="flex items-start text-gray-700">
 									<div className="flex mb-2">*****</div>
 									<p className="ml-2">77 reviews</p>
@@ -59,7 +62,9 @@ export default function Home() {
 									<p className="mr-3">$$$$</p>
 									<p>Toronto</p>
 								</div>
-								<p className="text-sm mt-1 font-bold text-gray-500">Booked 3 times today</p>
+								<p className="text-sm mt-1 font-bold text-gray-500">
+									Booked 3 times today
+								</p>
 							</div>
 						</div>
 						{/* CARD */}
