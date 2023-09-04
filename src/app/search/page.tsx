@@ -73,7 +73,7 @@ export default function Search() {
 								className="w-44 rounded"
 							/>
 							<div className="pl-5">
-								<h2 className="text-3xl">Mexican Restaurant</h2>
+								<h2 className="text-3xl">Meat Cheese Grill</h2>
 								<div className="flex items-start">
 									<div className="flex mb-2">*****</div>
 									<p className="ml-2 text-sm">Awesome</p>
