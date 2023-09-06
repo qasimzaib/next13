@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { RestaurantCardType } from "../page";
+import Pricing from "./Pricing";
 
 interface RestaurantCardProps {
 	restaurant: RestaurantCardType;
@@ -24,7 +25,7 @@ export default function RestaurantCard({restaurant} : RestaurantCardProps) {
 					</div>
 					<div className="flex text-reg font-light capitalize text-gray-500">
 						<p className=" mr-3">{restaurant.cuisine.name}</p>
-						<p className="mr-3">$$$$</p>
+						<Pricing pricing={restaurant.pricing} />
 						<p>{restaurant.location.name}</p>
 					</div>
 					<p className="text-sm mt-1 font-bold text-gray-500">
