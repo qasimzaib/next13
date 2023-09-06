@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { RestaurantCardType } from "../page";
 
-export default function RestaurantCard() {
+interface RestaurantCardProps {
+	restaurant: RestaurantCardType;
+}
+
+export default function RestaurantCard({} : RestaurantCardProps) {
 	return (
 		<div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
 			<Link href="/restaurant/mcg">
