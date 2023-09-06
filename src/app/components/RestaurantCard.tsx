@@ -11,7 +11,7 @@ export default function RestaurantCard() {
 				/>
 				<div className="p-1">
 					<h3 className="font-bold text-2xl mb-2 text-black">
-						Milestones Grill
+						MCG
 					</h3>
 					<div className="flex items-start text-gray-700">
 						<div className="flex mb-2">*****</div>
