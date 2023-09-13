@@ -46,7 +46,7 @@ const fetchLocations = async () => {
 export default async function Search({
 	searchParams,
 }: {
-	searchParams: { location: string };
+	searchParams: { location?: string; cuisine?: string; pricing?: string };
 }) {
 	const restaurants = await fetchRestaurantsByCity(searchParams.location);
 	const locations = await fetchLocations();
@@ -56,7 +56,7 @@ export default async function Search({
 		<>
 			<Header />
 			<div className="flex py-4 m-auto w-2/3 justify-between items-start">
-				<SearchSideBar locations={locations} cuisines={cuisines} />
+				<SearchSideBar locations={locations} cuisines={cuisines} searchParams={searchParams} />
 				<div className="w-5/6">
 					{restaurants.length ? (
 						<>
