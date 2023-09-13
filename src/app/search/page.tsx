@@ -4,10 +4,16 @@ import Header from "./components/Header";
 import RestaurantCard from "./components/RestaurantCard";
 import SearchSideBar from "./components/SearchSideBar";
 
+export interface SearchParams {
+	location?: string;
+	cuisine?: string;
+	pricing?: string;
+}
+
 const prisma = new PrismaClient();
 
-const fetchRestaurantsByCity = async (
-	location: string | undefined
+const fetchRestaurants = async (
+	searchParams: SearchParams
 ): Promise<RestaurantCardType[]> => {
 	const select = {
 		id: true,
@@ -19,18 +25,35 @@ const fetchRestaurantsByCity = async (
 		slug: true,
 	};
 
-	if (!location) {
-		return prisma.restaurant.findMany({ select });
+	const where: any = {};
+
+	if (searchParams.location) {
+		const location = {
+			name: {
+				equals: searchParams.location.toLowerCase(),
+			},
+		};
+		where.location = location;
+	}
+
+	if (searchParams.cuisine) {
+		const cuisine = {
+			name: {
+				equals: searchParams.cuisine.toLowerCase(),
+			},
+		};
+		where.cuisine = cuisine;
+	}
+
+	if (searchParams.pricing) {
+		const pricing = {
+			equals: searchParams.pricing,
+		};
+		where.pricing = pricing;
 	}
 
 	return prisma.restaurant.findMany({
-		where: {
-			location: {
-				name: {
-					equals: location.toLowerCase(),
-				},
-			},
-		},
+		where,
 		select,
 	});
 };
@@ -46,9 +69,9 @@ const fetchLocations = async () => {
 export default async function Search({
 	searchParams,
 }: {
-	searchParams: { location?: string; cuisine?: string; pricing?: string };
+	searchParams: SearchParams;
 }) {
-	const restaurants = await fetchRestaurantsByCity(searchParams.location);
+	const restaurants = await fetchRestaurants(searchParams);
 	const locations = await fetchLocations();
 	const cuisines = await fetchCuisines();
 
@@ -56,7 +79,11 @@ export default async function Search({
 		<>
 			<Header />
 			<div className="flex py-4 m-auto w-2/3 justify-between items-start">
-				<SearchSideBar locations={locations} cuisines={cuisines} searchParams={searchParams} />
+				<SearchSideBar
+					locations={locations}
+					cuisines={cuisines}
+					searchParams={searchParams}
+				/>
 				<div className="w-5/6">
 					{restaurants.length ? (
 						<>
