@@ -23,6 +23,7 @@ const fetchRestaurants = async (
 		cuisine: true,
 		location: true,
 		slug: true,
+		reviews: true,
 	};
 
 	const where: any = {};
@@ -88,7 +89,7 @@ export default async function Search({
 					{restaurants.length ? (
 						<>
 							{restaurants.map((restaurant) => (
-								<RestaurantCard restaurant={restaurant} />
+								<RestaurantCard restaurant={restaurant} key={restaurant.id} />
 							))}
 						</>
 					) : (
