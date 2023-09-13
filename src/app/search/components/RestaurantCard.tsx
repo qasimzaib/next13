@@ -1,3 +1,4 @@
+import Pricing from "@/app/components/Pricing";
 import { RestaurantCardType } from "@/app/page";
 import Link from "next/link";
 
@@ -8,7 +9,7 @@ interface RestaurantCardProps {
 export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
 	return (
 		<div className="border-b flex pb-5 ml-4">
-			<img src={restaurant.image} alt="" className="w-44 rounded" />
+			<img src={restaurant.image} alt="" className="w-44 h-36 rounded" />
 			<div className="pl-5">
 				<h2 className="text-3xl">{restaurant.name}</h2>
 				<div className="flex items-start">
@@ -17,9 +18,9 @@ export default function RestaurantCard({ restaurant }: RestaurantCardProps) {
 				</div>
 				<div className="mb-9">
 					<div className="font-light flex text-reg">
-						<p className="mr-4">$$$</p>
-						<p className="mr-4">{restaurant.cuisine.name}</p>
-						<p className="mr-4">{restaurant.location.name}</p>
+						<Pricing pricing={restaurant.pricing} />
+						<p className="mr-4 capitalize">{restaurant.cuisine.name}</p>
+						<p className="mr-4 capitalize">{restaurant.location.name}</p>
 					</div>
 				</div>
 				<div className="text-red-600">
