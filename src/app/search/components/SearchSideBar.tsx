@@ -14,17 +14,17 @@ export default function SearchSideBar({
 		{
 			price: PRICING.CHEAP,
 			label: "$",
-			className: "border w-full text-reg font-light rounded-l p-2",
+			className: "border w-full text-reg text-center font-light rounded-l p-2",
 		},
 		{
 			price: PRICING.REGULAR,
 			label: "$$",
-			className: "border w-full text-reg font-light p-2",
+			className: "border w-full text-reg text-center font-light p-2",
 		},
 		{
 			price: PRICING.EXPENSIVE,
 			label: "$$$",
-			className: "border w-full text-reg font-light rounded-r p-2",
+			className: "border w-full text-reg text-center font-light rounded-r p-2",
 		},
 	];
 	return (
