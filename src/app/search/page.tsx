@@ -1,11 +1,14 @@
 import { PrismaClient } from "@prisma/client";
+import { RestaurantCardType } from "../page";
 import Header from "./components/Header";
 import RestaurantCard from "./components/RestaurantCard";
 import SearchSideBar from "./components/SearchSideBar";
 
 const prisma = new PrismaClient();
 
-const fetchRestaurantsByCity = (location: string | undefined) => {
+const fetchRestaurantsByCity = async (
+	location: string | undefined
+): Promise<RestaurantCardType[]> => {
 	const select = {
 		id: true,
 		name: true,
@@ -17,7 +20,7 @@ const fetchRestaurantsByCity = (location: string | undefined) => {
 	};
 
 	if (!location) {
-		return prisma.restaurant.findMany();
+		return prisma.restaurant.findMany({ select });
 	}
 
 	return prisma.restaurant.findMany({
@@ -46,7 +49,11 @@ export default async function Search({
 				<SearchSideBar />
 				<div className="w-5/6">
 					{restaurants.length ? (
-						<RestaurantCard />
+						<>
+							{restaurants.map((restaurant) => (
+								<RestaurantCard restaurant={restaurant} />
+							))}
+						</>
 					) : (
 						<p>Sorry, no restaurants found in this area</p>
 					)}
